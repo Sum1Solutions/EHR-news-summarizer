@@ -26,8 +26,8 @@ This application fetches and summarizes the latest EHR regulatory and interopera
 
 1. **Clone this repository**:
    ```sh
-   git clone https://github.com/your-repo/ehr-news-summarizer.git
-   cd ehr-news-summarizer
+   git clone https://github.com/Sum1Solutions/EHR-news-summarizer.git
+   cd EHR-news-summarizer
    ```
 
 2. **Set up a virtual environment**:
@@ -92,7 +92,7 @@ You can customize the news categories and search queries by modifying the `categ
 
 ## License
 
-[Your License Information]
+MIT License
 
 ## Acknowledgements
 
