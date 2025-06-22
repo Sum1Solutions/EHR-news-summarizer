@@ -169,4 +169,4 @@ def fetch_and_display_news(n_clicks):
     return html.Div("Click the button to fetch the latest news summary."), ""
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run(debug=True, port=8051)
