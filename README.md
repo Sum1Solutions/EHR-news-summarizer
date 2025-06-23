@@ -27,6 +27,7 @@ A modern web application that fetches and summarizes the latest healthcare IT, E
   - Interactive category selection
   - Real-time feedback during searches
   - Mobile-friendly layout
+  - Intuitive search and filtering options
 
 ## 🚀 Quick Start
 
@@ -59,12 +60,23 @@ A modern web application that fetches and summarizes the latest healthcare IT, E
    ```bash
    pip install -r requirements.txt
    ```
+   
+   This will install all required packages including:
+   - Dash 3.0.4
+   - Flask 3.0.3
+   - OpenAI 1.82.1+
+   - Python-dotenv 1.1.0+
+   - Other necessary dependencies
 
 4. **Configure environment variables**:
    ```bash
    cp .env.example .env
    ```
-   Then edit `.env` and add your API keys.
+   Edit the `.env` file and add your API keys:
+   ```
+   OPENAI_API_KEY=your_openai_api_key_here
+   NEWS_API_KEY=your_newsapi_key_here
+   ```
 
 ## 🖥️ Using the Application
 
@@ -78,22 +90,55 @@ A modern web application that fetches and summarizes the latest healthcare IT, E
    - Example: `python app.py --port 8051`
 
 2. **Access the web interface**:
-   - Open your browser to `http://localhost:8050`
-   - The application automatically loads with the latest news
+   - Open your browser to `http://localhost:5002` (or your specified port)
+   - The application loads with search interface ready for use
 
 ### How to Search
 
 1. **Search by term**:
    - Enter keywords in the search box (e.g., "Epic EHR", "Cerner")
-   - Click "Fetch News"
+   - Click "Fetch News" button
+   - The button will be enabled when there's valid input
 
 2. **Browse by category**:
    - Select one or more categories from the list
-   - Click "Fetch News"
+   - Click "Fetch News" button
+   - The button will be enabled when at least one category is selected
 
 3. **Combine search methods**:
-   - Enter search terms AND select categories
-   - Results will match both criteria
+   - Enter search terms AND/OR select categories
+   - Click "Fetch News" to see combined results
+   - The button will be enabled when there's any valid input
+
+### Troubleshooting
+
+- **Port already in use**: If you see a port conflict, either:
+  - Terminate the existing process using the port:
+    ```bash
+    # On macOS/Linux
+    lsof -i :5002 | grep LISTEN | awk '{print $2}' | xargs -r kill -9
+    ```
+  - Or start the app on a different port:
+    ```bash
+    python app.py --port 8051
+    ```
+
+- **Missing dependencies**: If you encounter import errors:
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+- **API key issues**: Ensure your API keys are correctly set in the `.env` file and have proper permissions.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [Dash](https://dash.plotly.com/) and [Flask](https://flask.palletsprojects.com/)
+- Powered by [OpenAI](https://openai.com/) and [News API](https://newsapi.org/)
+- Icons by [Font Awesome](https://fontawesome.com/)
 
 ### Understanding the Results
 
