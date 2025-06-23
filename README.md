@@ -1,101 +1,145 @@
-# EHR Regulatory News Summarization App
+# Healthcare IT News Summarizer
 
-This application fetches and summarizes the latest EHR regulatory and interoperability news using OpenAI's GPT API and displays it via a Dash-based web interface. It's designed for healthcare IT professionals, EHR developers, and compliance officers who need to stay updated on regulatory changes and industry trends.
+A modern web application that fetches and summarizes the latest healthcare IT, EHR, and regulatory news using OpenAI's GPT API. The app provides a clean, intuitive interface for healthcare IT professionals, developers, and decision-makers to stay informed about industry developments.
 
-## Features
+## ✨ Features
 
-- **Categorized News Retrieval**: Automatically fetches news from multiple healthcare IT categories:
+- **Flexible Search Options**:
+  - Search by specific terms (e.g., company names, technologies)
+  - Browse predefined categories
+  - Combine search terms with categories for precise results
+
+- **Comprehensive News Coverage**:
   - Regulatory & Compliance (ONC, HHS, CMS, EHR certification)
   - FHIR & Interoperability (HL7 FHIR, SMART on FHIR, health data exchange)
   - Government Policies (Executive Orders, Federal Register, healthcare policy)
   - AI in Healthcare (AI/ML applications, predictive analytics, automation)
   - Market Trends (EHR vendors, health tech startups, M&A activity)
+  - EHR News (Electronic Health Records updates and developments)
 
-- **AI-Powered Summarization**: Uses OpenAI's GPT models to create concise, relevant summaries of complex healthcare IT news.
+- **AI-Powered Summarization**:
+  - Concise, bullet-point summaries of complex healthcare IT news
+  - Focus on key information and actionable insights
+  - Context-aware processing of healthcare-specific terminology
 
-- **User-Friendly Interface**: Clean, responsive web interface with categorized summaries and loading indicators.
+- **Modern User Interface**:
+  - Clean, responsive design
+  - Interactive category selection
+  - Real-time feedback during searches
+  - Mobile-friendly layout
 
-## Installation
+## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.8+
-- An OpenAI API key
-- A News API key
+- Python 3.8 or higher
+- [OpenAI API key](https://platform.openai.com/)
+- [News API key](https://newsapi.org/)
 
-### Steps
+### Installation
 
-1. **Clone this repository**:
-   ```sh
+1. **Clone the repository**:
+   ```bash
    git clone https://github.com/Sum1Solutions/EHR-news-summarizer.git
    cd EHR-news-summarizer
    ```
 
-2. **Set up a virtual environment**:
-   ```sh
-   python3 -m venv venv
+2. **Set up a virtual environment** (recommended):
+   ```bash
+   # Create virtual environment
+   python -m venv venv
+   
+   # Activate it
+   # On macOS/Linux:
+   source venv/bin/activate
+   # On Windows:
+   # .\venv\Scripts\activate
    ```
 
-3. **Activate the virtual environment**:
-   - On macOS and Linux:
-     ```sh
-     source venv/bin/activate
-     ```
-   - On Windows:
-     ```sh
-     .\venv\Scripts\activate
-     ```
-
-4. **Install the required packages**:
-   ```sh
+3. **Install dependencies**:
+   ```bash
    pip install -r requirements.txt
    ```
 
-5. **Create an environment file**:
-   - Copy the `.env.example` file to `.env`
-   - Add your API keys:
-     ```
-     OPENAI_API_KEY=your_openai_api_key
-     NEWS_API_KEY=your_news_api_key
-     ```
+4. **Configure environment variables**:
+   ```bash
+   cp .env.example .env
+   ```
+   Then edit `.env` and add your API keys.
 
-## Running the Application
+## 🖥️ Using the Application
 
-1. **Start the application**:
-   ```sh
+1. **Start the server**:
+   ```bash
    python app.py
    ```
-   - To use a different port (if 8050 is in use):
-     ```sh
-     python app.py --port 8051
-     ```
+   - The application runs on port 5002 by default
+   - Access it at: http://127.0.0.1:5002/
+   - Use `--port` to specify a different port if needed
+   - Example: `python app.py --port 8051`
 
-2. **Access the dashboard**:
-   - Open your web browser and navigate to `http://localhost:8050` (or the port you specified)
-   - Click the "Fetch Latest News" button to retrieve and summarize the latest healthcare IT news
+2. **Access the web interface**:
+   - Open your browser to `http://localhost:8050`
+   - The application automatically loads with the latest news
 
-## How It Works
+### How to Search
 
-1. The application sends targeted queries to the News API to fetch relevant healthcare IT news articles.
-2. Articles are categorized and filtered to ensure relevance to healthcare IT.
-3. OpenAI's GPT model summarizes the news by category, focusing on the most important updates for EHR developers.
-4. The summarized information is presented in a clean, organized interface.
+1. **Search by term**:
+   - Enter keywords in the search box (e.g., "Epic EHR", "Cerner")
+   - Click "Fetch News"
 
-## Customization
+2. **Browse by category**:
+   - Select one or more categories from the list
+   - Click "Fetch News"
 
-You can customize the news categories and search queries by modifying the `categories` dictionary in the `fetch_health_it_news` function in `app.py`.
+3. **Combine search methods**:
+   - Enter search terms AND select categories
+   - Results will match both criteria
 
-## Troubleshooting
+### Understanding the Results
 
-- **API Key Issues**: Ensure your API keys are correctly set in the `.env` file.
-- **Port Conflicts**: If port 8050 is already in use, specify a different port using the `--port` parameter.
-- **No News Found**: Check your internet connection and verify that your News API key is valid.
+- Articles are displayed with source, title, and summary
+- AI-generated summaries appear below the article list
+- Click "Read full article" to view the original source
 
-## License
+## 🛠️ Development
 
-MIT License
+### Customization
 
-## Acknowledgements
+1. **Modify categories**:
+   Edit the `CATEGORIES` dictionary in `app.py` to add or modify news categories and their search queries.
 
-- [OpenAI](https://openai.com/) for providing the GPT API
-- [News API](https://newsapi.org/) for the news retrieval service
-- [Dash](https://dash.plotly.com/) for the web application framework
+2. **Adjust summarization**:
+   Modify the `summarize_news` function to change how articles are processed and summarized.
+
+3. **UI Customization**:
+   The application uses Dash with custom CSS. Edit the layout in `app.py` to change the appearance.
+
+### Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| API Key Errors | Verify keys in `.env` and ensure they're properly quoted |
+| No Results | Check your internet connection and API key limits |
+| Port in Use | Use `--port` flag to specify a different port |
+| Module Not Found | Run `pip install -r requirements.txt` |
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgements
+
+- [OpenAI](https://openai.com/) - For the powerful GPT API
+- [News API](https://newsapi.org/) - For comprehensive news coverage
+- [Dash](https://dash.plotly.com/) - For the reactive web framework
+- [Plotly](https://plotly.com/) - For visualization components
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
